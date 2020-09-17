@@ -2,7 +2,7 @@ import pyxdf
 import matplotlib.pyplot as plt
 import numpy as np
 
-data, header = pyxdf.load_xdf('raw/BPresp.xdf')
+data, header = pyxdf.load_xdf('analysis/raw/BPresp.xdf')
 
 for stream in data:
     y = stream['time_series']
