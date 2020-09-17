@@ -1,4 +1,3 @@
 main_lastrun.py
-data/*
-!data/.gitkeep
+data/
 exp_data/Dragon.mp4
