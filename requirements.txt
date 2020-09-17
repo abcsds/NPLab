@@ -1,3 +1,6 @@
+psychopy
+wxPython
+pylsl
 numpy
 matplotlib
 scipy
