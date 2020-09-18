@@ -5,4 +5,4 @@ numpy
 matplotlib
 scipy
 pyxdf
-heartpy
+biosppy
