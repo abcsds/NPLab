@@ -82,8 +82,19 @@ for y in out["templates"]:
     plt.plot(out["templates_ts"], y, color="#19608a", linewidth=1)
 
 
-plt.figure(figsize=(16, 7))
+plt.figure(figsize=(50, 7))
 plt.plot(out["heart_rate_ts"], out["heart_rate"],
          color="#51A6D8",
          linewidth=1)
-# TODO: RRintervals, hrv, breath amplitude, gsr mean, segmentation.
+
+# R-R intervals
+rr_intervals = np.diff(out["ts"][out["rpeaks"]], prepend=[np.nan])
+plt.figure(figsize=(16, 7))
+plt.plot(out["ts"][out["rpeaks"]] + stream["time_stamps"].min(),
+         rr_intervals,
+         linewidth=1)
+for marker, ts in zip(stream["time_series"], stream["time_stamps"]):
+    plt.axvline(x=ts, c="red")
+    markers[marker[0]] = ts
+
+# TODO: hrv, segmentation (remember time delay), breath amplitude, gsr mean.
