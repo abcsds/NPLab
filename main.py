@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2020.2.3),
-    on Thu 17 Sep 2020 04:23:31 PM CEST
+This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4post1),
+    on Fri 09 Oct 2020 02:06:21 PM CEST
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019)
@@ -38,12 +38,14 @@ info = StreamInfo(name='PsychoPy', type='Markers', channel_count=1,
 # Initialize the LSL stream.
 outlet = StreamOutlet(info)
 
+
+
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '2020.2.3'
+psychopyVersion = '2020.2.4post1'
 expName = 'main'  # from the Builder filename that created this script
 expInfo = {'participant': ''}
 dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
@@ -91,7 +93,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "welcome"
 welcomeClock = core.Clock()
 Welcome_text = visual.TextStim(win=win, name='Welcome_text',
-    text='Wellcome!\n\nIn the next minutes you will be prompted with two tasks, please follow the instructions on screen. \n\nWhen you are ready, press the spacebar...',
+    text="Welcome!\n\nIn the next minutes you will be prompted with two tasks: First you'll watch some pictures and later a shrot video, please follow the instructions on screen. \n\nWhen you are ready, press the spacebar...",
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0,
     color='white', colorSpace='rgb', opacity=1,
@@ -102,7 +104,7 @@ key_resp = keyboard.Keyboard()
 # Initialize components for Routine "baseline"
 baselineClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='Please look at the screen for a moment.',
+    text='Please look at the following pictures.',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0,
     color='white', colorSpace='rgb', opacity=1,
@@ -169,6 +171,45 @@ movie = visual.MovieStim3(
     loop=False,
     depth=0.0,
     )
+
+# Initialize components for Routine "Scale"
+ScaleClock = core.Clock()
+scale_text = visual.TextStim(win=win, name='scale_text',
+    text='Lastly, we present you two scales: arousal (excitement) and valence. Please rate how the video made you feel. When you are done, press the spacebar.',
+    font='Arial',
+    pos=(0, .3), height=0.05, wrapWidth=None, ori=0,
+    color='white', colorSpace='rgb', opacity=1,
+    languageStyle='LTR',
+    depth=0.0);
+scale_a = visual.ImageStim(
+    win=win,
+    name='scale_a',
+    image='exp_data/img/SAM-A-9.png', mask=None,
+    ori=0, pos=(0, 0), size=(1.2, 0.2),
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=128, interpolate=True, depth=-1.0)
+slider_a = visual.Slider(win=win, name='slider_a',
+    size=(1.0, 0.05), pos=(0, -.15), units=None,
+    labels=None, ticks=(1, 2, 3, 4, 5, 6, 7, 8, 9),
+    granularity=0, style=('triangleMarker',),
+    color='LightGray', font='HelveticaBold',
+    flip=False)
+scale_v = visual.ImageStim(
+    win=win,
+    name='scale_v',
+    image='exp_data/img/SAM-V-9.png', mask=None,
+    ori=0, pos=(0, -.3), size=(1.2, 0.2),
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=128, interpolate=True, depth=-3.0)
+slider_v = visual.Slider(win=win, name='slider_v',
+    size=(1.0, 0.05), pos=(0, -0.45), units=None,
+    labels=None, ticks=(-4, -3, -2, -1, 0, 1, 2, 3, 4),
+    granularity=0, style=('triangleMarker',),
+    color='LightGray', font='HelveticaBold',
+    flip=False)
+key_resp_scales = keyboard.Keyboard()
 
 # Initialize components for Routine "thanks"
 thanksClock = core.Clock()
@@ -577,6 +618,144 @@ for thisComponent in stimulusComponents:
         thisComponent.setAutoDraw(False)
 movie.stop()
 
+# ------Prepare to start Routine "Scale"-------
+continueRoutine = True
+# update component parameters for each repeat
+slider_a.reset()
+slider_v.reset()
+key_resp_scales.keys = []
+key_resp_scales.rt = []
+_key_resp_scales_allKeys = []
+# keep track of which components have finished
+ScaleComponents = [scale_text, scale_a, slider_a, scale_v, slider_v, key_resp_scales]
+for thisComponent in ScaleComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+ScaleClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Scale"-------
+outlet.push_sample(x=[5])
+while continueRoutine:
+    # get current time
+    t = ScaleClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=ScaleClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+
+    # *scale_text* updates
+    if scale_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        scale_text.frameNStart = frameN  # exact frame index
+        scale_text.tStart = t  # local t and not account for scr refresh
+        scale_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(scale_text, 'tStartRefresh')  # time at next scr refresh
+        scale_text.setAutoDraw(True)
+
+    # *scale_a* updates
+    if scale_a.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        scale_a.frameNStart = frameN  # exact frame index
+        scale_a.tStart = t  # local t and not account for scr refresh
+        scale_a.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(scale_a, 'tStartRefresh')  # time at next scr refresh
+        scale_a.setAutoDraw(True)
+
+    # *slider_a* updates
+    if slider_a.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        slider_a.frameNStart = frameN  # exact frame index
+        slider_a.tStart = t  # local t and not account for scr refresh
+        slider_a.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(slider_a, 'tStartRefresh')  # time at next scr refresh
+        slider_a.setAutoDraw(True)
+
+    # *scale_v* updates
+    if scale_v.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        scale_v.frameNStart = frameN  # exact frame index
+        scale_v.tStart = t  # local t and not account for scr refresh
+        scale_v.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(scale_v, 'tStartRefresh')  # time at next scr refresh
+        scale_v.setAutoDraw(True)
+
+    # *slider_v* updates
+    if slider_v.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        slider_v.frameNStart = frameN  # exact frame index
+        slider_v.tStart = t  # local t and not account for scr refresh
+        slider_v.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(slider_v, 'tStartRefresh')  # time at next scr refresh
+        slider_v.setAutoDraw(True)
+
+    # *key_resp_scales* updates
+    waitOnFlip = False
+    if key_resp_scales.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_scales.frameNStart = frameN  # exact frame index
+        key_resp_scales.tStart = t  # local t and not account for scr refresh
+        key_resp_scales.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_scales, 'tStartRefresh')  # time at next scr refresh
+        key_resp_scales.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_scales.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_scales.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_scales.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_scales.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_scales_allKeys.extend(theseKeys)
+        if len(_key_resp_scales_allKeys):
+            key_resp_scales.keys = _key_resp_scales_allKeys[-1].name  # just the last key pressed
+            key_resp_scales.rt = _key_resp_scales_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in ScaleComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Scale"-------
+for thisComponent in ScaleComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('scale_text.started', scale_text.tStartRefresh)
+thisExp.addData('scale_text.stopped', scale_text.tStopRefresh)
+thisExp.addData('scale_a.started', scale_a.tStartRefresh)
+thisExp.addData('scale_a.stopped', scale_a.tStopRefresh)
+thisExp.addData('slider_a.response', slider_a.getRating())
+thisExp.addData('slider_a.rt', slider_a.getRT())
+thisExp.addData('slider_a.started', slider_a.tStartRefresh)
+thisExp.addData('slider_a.stopped', slider_a.tStopRefresh)
+thisExp.addData('scale_v.started', scale_v.tStartRefresh)
+thisExp.addData('scale_v.stopped', scale_v.tStopRefresh)
+thisExp.addData('slider_v.response', slider_v.getRating())
+thisExp.addData('slider_v.rt', slider_v.getRT())
+thisExp.addData('slider_v.started', slider_v.tStartRefresh)
+thisExp.addData('slider_v.stopped', slider_v.tStopRefresh)
+# the Routine "Scale" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
 # ------Prepare to start Routine "thanks"-------
 continueRoutine = True
 # update component parameters for each repeat
@@ -599,7 +778,7 @@ thanksClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
 # -------Run Routine "thanks"-------
-outlet.push_sample(x=[5])
+outlet.push_sample(x=[6])
 while continueRoutine:
     # get current time
     t = thanksClock.getTime()
